@@ -45,6 +45,8 @@ afterBody: [
       category: 'Announcements',
       // from data-category-id
       categoryId: 'DIC_kwDOFxRnmM4B-Xg6',
+      // from data-lang
+      lang: 'en'
     }
   }),
 ],
@@ -90,6 +92,10 @@ type Options = {
     // where to put the comment input box relative to the comments
     // defaults to 'bottom'
     inputPosition?: "top" | "bottom"
+
+    // set your preference language here
+    // defaults to 'en'
+    lang?: string
   }
 }
 ```
@@ -113,4 +119,15 @@ afterBody: [
     }
   }),
 ],
+```
+
+#### Conditionally display comments
+
+Quartz can conditionally display the comment box based on a field `comments` in the frontmatter. By default, all pages will display comments, to disable it for a specific page, set `comments` to `false`.
+
+```
+---
+title: Comments disabled here!
+comments: false
+---
 ```
