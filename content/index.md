@@ -1,5 +1,6 @@
 ---
 title: Welcome!
+publish: true
 ---
 Hello There 👋 - Welcome to my "Digital Garden".
 
