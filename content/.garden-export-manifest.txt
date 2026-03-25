@@ -1,0 +1,2 @@
+notes/digital-garden-publishing-pipeline.md
+writing/publish-obsidian-notes-without-duplication.md
