@@ -1,2 +1,3 @@
 notes/digital-garden-publishing-pipeline.md
+notes/radiohead-web-inventory.md
 writing/publish-obsidian-notes-without-duplication.md

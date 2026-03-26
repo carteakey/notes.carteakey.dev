@@ -102,8 +102,8 @@ This means I never author notes directly in the Quartz content folder.
 The exporter currently does a few opinionated things:
 
 - scans the vault for Markdown notes
-- excludes obviously private top-level areas like inbox, finance, personal, archive, and config
-- keeps only notes with `publish: true`
+- excludes only non-note system areas like `.obsidian`, `.agent`, `.trash`, and `.vscode`
+- keeps only notes with `publish: true`, regardless of where they live in the vault
 - generates public output paths from `kind`/`bucket` plus `slug`
 - defaults to `<slug>.md` at the site root when no public bucket is specified
 - preserves note content and frontmatter

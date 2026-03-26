@@ -89,13 +89,13 @@ The script lives in my vault under `1. system 📊/scripts ⚡/export-garden.py`
 It exports from:
 
 ```text
-/Users/kchauhan/.superset/worktrees/vault-76/flannel-feet
+/Users/kchauhan/repos/vault-76
 ```
 
 into:
 
 ```text
-/Users/kchauhan/repos/carteakey.dev/notes.carteakey.dev/content
+/Users/kchauhan/repos/notes.carteakey.dev/content
 ```
 
 More specifically:
