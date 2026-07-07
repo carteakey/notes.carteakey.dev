@@ -1,0 +1,53 @@
+name: Sync with Upstream Quartz
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: "0 2 * * *"
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/jackyzha0/quartz.git || true
+          git fetch upstream
+
+      - name: Merge upstream changes
+        run: |
+          git merge upstream/v5 --no-edit || {
+            echo "Merge conflict detected. Creating PR instead."
+            exit 1
+          }
+
+      - name: Push changes
+        run: git push origin v5
+
+      - name: Create PR on conflict
+        if: failure()
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: sync with upstream Quartz v5"
+          title: "Sync with upstream Quartz v5"
+          body: |
+            Automated sync with upstream Quartz repository failed due to conflicts.
+            Please review and merge manually.
+
+            Upstream: https://github.com/jackyzha0/quartz
+          branch: sync-upstream
+          delete-branch: true
